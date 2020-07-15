@@ -100,7 +100,7 @@ return elements in Last In First Out order.
 #             return value
 
 
-### Answer to Number Three: ####
+#### Answer to Number Three: ####
 # When implementing a stack via Linked List vs an array, there is a significant increase in runtime complexity.
 # Because arrays support random access by index, they are faster, with a runtime complexity of O(1) to access
 # an element. Because Linked Lists work off sequential access, we need to traverse the list until the desired
