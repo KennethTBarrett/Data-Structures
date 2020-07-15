@@ -17,20 +17,57 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # If the value is greater than or equal to the current value...
+        if value >= self.value:
+            # Check if there's a value to the right.
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
+        # If the value is less than the current value...
+        elif value < self.value:
+            # Check if there's a value to the left.
+            if self.left is None:  # If there's not...
+                self.left = BSTNode(value)  # Set it to the BSTNode.
+            else:  # Otherwise...
+                self.left.insert(value)  # Use recursion.
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:  # Check whether current value is our target.
+            return True  # If so, return True.
+        elif target < self.value:  # If the target is less than the value...
+            if self.left == None:  # Check if there's a left. If not...
+                return False  # Return false.
+            else:  # Otherwise...
+                return self.left.contains(target)  # Use recursion.
+        elif target > self.value:  # If the target is greater than the value...
+            if self.right is None:  # And there's nothing to our right...
+                return False  # Return False
+            else:  # If there is...
+                return self.right.contains(target)  # Recursion.
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # Confirm that a higher value even exists...
+        if self.right == None:  # If not...
+            return self.value  # Return the value.
+        return self.right.get_max()  # Return the maximum value.
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)  # Run function on root node.
+        # Confirm there's a node to the left.
+        if self.left == None:  # If not...
+            pass  # Pass.
+        else:  # If there is...
+            self.left.for_each(fn)  # Recursion.
+        # Confirm there's a node to the right.
+        if self.right == None:  # If there's not...
+            pass  # Pass.
+        else:  # If there is...
+            self.right.for_each(fn)  # Recusion.
 
     # Part 2 -----------------------
 
