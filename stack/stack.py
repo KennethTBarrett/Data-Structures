@@ -33,51 +33,46 @@ return elements in Last In First Out order.
 
 
 #### FROM SCRATCH - DOES NOT FUNCTION (SEE NOTES). ####
-# class LinkedList:
-#     """This is the class for our LinkedList."""
-#     def __init__(self):
-#         self.head = None
-#         self.tail = None
+class LinkedList:
+    """This is the class for our LinkedList."""
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.next = next
 
-# class Node:
-#     """This is the node class for the nodes within our linkedlist."""
-#     def __init__(self, value):
-#         self.value = value
-#         self.next = next
-# class Stack:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = LinkedList()
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
 
-#     def push(self, value):
-#         new_node = Node(value)  # This is our new node.
-#         # First, confirm if there is a head or not.
-#         if self.storage.head is None:  # If there is not...
-#             self.storage.head = new_node  # Make our value the head.
-#         else:  # Otherwise...
-#             self.storage.next = new_node  # Make it the next value.
-#         self.size += 1  # Add to the size of the linkedlist.
+    def push(self, value):
+        # First, confirm if there is a head or not.
+        if self.storage.head is None:  # If there is not...
+            self.storage.head = value  # Make our value the head.
+        else:  # Otherwise...
+            self.storage.next = value  # Make it the next value.
+        self.size += 1  # Add to the size of the linkedlist.
             
-#     def pop(self):
-        # # Ensure the location is our tail by looping through the linkedlist.
-        # while self.storage.next is not None:  # While the next value isn't the tail
-        #     self.storage.value = self.storage.next  # Set the next value to the following value.
-        #     #### MY ISSUE ####
-        #     # I'm having an impossible time figuring out how to set the value following the .next value...
-        #     # Something along the lines of .next.next if that makes sense? I've completed MVP using the LinkedList class
-        #     # given in lecture, however I would like to discuss how to make this function for better fundamental understanding.
-        #     #### /END ISSUE ####
-        # value = self.storage.value  # This is our tail. Using to return.
-        # # Set the popped tail's value to None.
-        # self.storage.next = None
-        # # Set the current value as our new tail.
-        # self.storage.value = self.storage.tail
-        # self.size -= 1  # Subtract from the size of our linkedlist.
+    def pop(self):
+        # Ensure the location is our tail by looping through the linkedlist.
+        while self.storage.next is not None:  # While the next value isn't the tail
+            self.storage.value = self.storage.next  # Set the next value to the following value.
+            #### MY ISSUE ####
+            # I'm having an impossible time figuring out how to set the value following the .next value... (I believe this is the issue(?))
+            # Something along the lines of .next.next if that makes sense? I've completed MVP using the LinkedList class
+            # given in lecture, however I would like to discuss how to make this function for better fundamental understanding.
+            #### /END ISSUE ####
+        value = self.storage.value  # This is our tail. Using to return.
+        # Set the popped tail's value to None.
+        self.storage.next = None
+        # Set the current value as our new tail.
+        self.storage.value = self.storage.tail
+        self.size -= 1  # Subtract from the size of our linkedlist.
         
-        # return value
+        return value
 
 
-#### LAZY METHOD FOR MVP - FUNCTIONS. ####
+# ### LAZY METHOD FOR MVP - FUNCTIONS. ####
 # class Stack:
 #     def __init__(self):
 #         self.size = 0  # Set the default size to zero.
