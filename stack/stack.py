@@ -43,7 +43,7 @@ return elements in Last In First Out order.
 #         self.next = next
 
 
-#### FROM SCRATCH - DOES NOT FUNCTION (SEE NOTES) ####
+#### FROM SCRATCH - DOES NOT FUNCTION (SEE NOTES). ####
 # class Stack:
 #     def __init__(self):
 #         self.size = 0
@@ -77,7 +77,7 @@ return elements in Last In First Out order.
         # return value
 
 
-#### LAZY METHOD FOR MVP ####
+#### LAZY METHOD FOR MVP - FUNCTIONS. ####
 # class Stack:
 #     def __init__(self):
 #         self.size = 0  # Set the default size to zero.
