@@ -1,7 +1,7 @@
 
-from singly_linked_list import LinkedList, Node
+# from singly_linked_list import LinkedList, Node
 """
-A stack is a data structure whose primary purpose is to store and
+A stack is a data structure whose primary purpose is to store andourourour
 return elements in Last In First Out order. 
 
 1. Implement the Stack class using an array as the underlying storage structure.
@@ -30,6 +30,9 @@ return elements in Last In First Out order.
 #     def pop(self):
 #         if self.storage:
 #             return self.storage.pop()
+
+
+#### FROM SCRATCH - DOES NOT FUNCTION (SEE NOTES). ####
 # class LinkedList:
 #     """This is the class for our LinkedList."""
 #     def __init__(self):
@@ -41,9 +44,6 @@ return elements in Last In First Out order.
 #     def __init__(self, value):
 #         self.value = value
 #         self.next = next
-
-
-#### FROM SCRATCH - DOES NOT FUNCTION (SEE NOTES). ####
 # class Stack:
 #     def __init__(self):
 #         self.size = 0
