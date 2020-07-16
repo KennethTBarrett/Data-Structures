@@ -1,3 +1,6 @@
+from stack import Stack
+from queue import Queue
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -74,17 +77,56 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:  # If there's a left node (low to high)
+            node.left.in_order_print(node.left)  # Recursion.
+        print(node.value)  # Print the value.
+        if node.right:  # If there's a right node...
+            node.right.in_order_print(node.right)  # Recursion.
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # Because we're using BFT, I'm going to need to use the Queue data structure.
+        queue_node = Queue()
+        # Add the node to our queue.
+        queue_node.enqueue(node)
+
+        # While the queue isn't empty...
+        while queue_node.size > 0:
+            # Dequeue our node.
+            dequeued = queue_node.dequeue()
+            # Print the value of it.
+            print(dequeued.value)
+
+            # Now, we need to add the nodes to the next level.
+            if dequeued.left:  # If there is a node to the left...
+                # Add it to our queue.
+                queue_node.enqueue(dequeued.left)
+            if dequeued.right:  # If there is a node to the right...
+                # Add it to our queue.
+                queue_node.enqueue(dequeued.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # Because we're using DFT, I'm going to need to use the Stack data structure.
+        stack_node = Stack()
+        # Add the node into our stack.
+        stack_node.push(node)
+
+        # While the stack isn't empty...
+        while stack_node.size > 0:
+            # Delete the node from the Stack.
+            deleted = stack_node.pop()
+            # Print value of that node.
+            print(deleted.value)
+
+            # Now, we need to add the nodes to the next level.
+            if deleted.left:
+                stack_node.push(deleted.left)
+            if deleted.right:
+                stack_node.push(deleted.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
