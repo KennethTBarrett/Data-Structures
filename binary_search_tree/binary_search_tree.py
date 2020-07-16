@@ -2,9 +2,9 @@ from stack import Stack
 from queue import Queue
 
 """
-Binary search trees are a data structure that enforce an ordering over 
-the data they store. That ordering in turn makes it a lot more efficient 
-at searching for a particular piece of data in the tree. 
+Binary search trees are a data structure that enforce an ordering over
+the data they store. That ordering in turn makes it a lot more efficient
+at searching for a particular piece of data in the tree.
 
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
@@ -12,6 +12,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -41,7 +43,7 @@ class BSTNode:
         if self.value == target:  # Check whether current value is our target.
             return True  # If so, return True.
         elif target < self.value:  # If the target is less than the value...
-            if self.left == None:  # Check if there's a left. If not...
+            if self.left is None:  # Check if there's a left. If not...
                 return False  # Return false.
             else:  # Otherwise...
                 return self.left.contains(target)  # Use recursion.
@@ -54,7 +56,7 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # Confirm that a higher value even exists...
-        if self.right == None:  # If not...
+        if self.right is None:  # If not...
             return self.value  # Return the value.
         return self.right.get_max()  # Return the maximum value.
 
@@ -62,12 +64,12 @@ class BSTNode:
     def for_each(self, fn):
         fn(self.value)  # Run function on root node.
         # Confirm there's a node to the left.
-        if self.left == None:  # If not...
+        if self.left is None:  # If not...
             pass  # Pass.
         else:  # If there is...
             self.left.for_each(fn)  # Recursion.
         # Confirm there's a node to the right.
-        if self.right == None:  # If there's not...
+        if self.right is None:  # If there's not...
             pass  # Pass.
         else:  # If there is...
             self.right.for_each(fn)  # Recusion.
@@ -86,7 +88,8 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        # Because we're using BFT, I'm going to need to use the Queue data structure.
+        # Because we're using BFT, I'm going to need to use the
+        # Queue data structure.
         queue_node = Queue()
         # Add the node to our queue.
         queue_node.enqueue(node)
@@ -106,11 +109,11 @@ class BSTNode:
                 # Add it to our queue.
                 queue_node.enqueue(dequeued.right)
 
-
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        # Because we're using DFT, I'm going to need to use the Stack data structure.
+        # Because we're using DFT, I'm going to need to use the
+        # Stack data structure.
         stack_node = Stack()
         # Add the node into our stack.
         stack_node.push(node)
